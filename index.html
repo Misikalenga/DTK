@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DTK Communication — Impression & Communication visuelle, Kinshasa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#10193A',
+          paper: '#F5F1E7',
+          paper2: '#EFE9DA',
+          yellow: '#F5B700',
+          red: '#C81D3D',
+          cyan: '#0EA5B7',
+          charcoal: '#1A1A1A',
+          slate: '#7C7A6F',
+        },
+        fontFamily: {
+          display: ['Anton', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          mono: ['IBM Plex Mono', 'monospace'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+  html { background: #F5F1E7; }
+  body { font-family: 'Inter', sans-serif; }
+  .display { font-family: 'Anton', sans-serif; letter-spacing: 0.01em; }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+
+  /* Registration mark — recurring print-production motif */
+  .regmark { position: relative; width: 22px; height: 22px; }
+  .regmark::before, .regmark::after {
+    content: ""; position: absolute; background: currentColor;
+  }
+  .regmark::before { top: 50%; left: 0; width: 100%; height: 1.5px; transform: translateY(-50%); }
+  .regmark::after { left: 50%; top: 0; height: 100%; width: 1.5px; transform: translateX(-50%); }
+  .regmark-circle { position: absolute; inset: 3px; border: 1.5px solid currentColor; border-radius: 999px; }
+
+  /* Color bar — CMYK-style calibration strip, the page's signature device */
+  .colorbar { display: flex; height: 6px; width: 100%; }
+  .colorbar > span { flex: 1; }
+
+  .crop-tl { position: absolute; top: 0; left: 0; width: 26px; height: 26px; border-top: 2px solid currentColor; border-left: 2px solid currentColor; }
+  .crop-tr { position: absolute; top: 0; right: 0; width: 26px; height: 26px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; }
+  .crop-bl { position: absolute; bottom: 0; left: 0; width: 26px; height: 26px; border-bottom: 2px solid currentColor; border-left: 2px solid currentColor; }
+  .crop-br { position: absolute; bottom: 0; right: 0; width: 26px; height: 26px; border-bottom: 2px solid currentColor; border-right: 2px solid currentColor; }
+
+  .focus-ring:focus-visible { outline: 3px solid #0EA5B7; outline-offset: 2px; }
+
+  .marquee-track { display: flex; width: max-content; animation: scroll 32s linear infinite; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+</style>
+</head>
+<body class="bg-paper text-charcoal antialiased">
+
+  <!-- Color bar top -->
+  <div class="colorbar">
+    <span class="bg-yellow"></span><span class="bg-red"></span><span class="bg-cyan"></span><span class="bg-ink"></span>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-paper/95 backdrop-blur-md border-b border-ink/10">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex justify-between items-center">
+      <a href="#" class="flex items-baseline gap-1 focus-ring rounded">
+        <span class="display text-2xl text-ink">DTK</span>
+        <span class="mono text-[10px] tracking-[0.2em] text-slate uppercase">Communication</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-9 text-sm font-medium text-charcoal">
+        <a href="#agence" class="hover:text-red transition focus-ring rounded">Agence</a>
+        <a href="#services" class="hover:text-red transition focus-ring rounded">Services</a>
+        <a href="#realisations" class="hover:text-red transition focus-ring rounded">Réalisations</a>
+        <a href="#processus" class="hover:text-red transition focus-ring rounded">Pourquoi DTK</a>
+        <a href="#contact" class="hover:text-red transition focus-ring rounded">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/" target="_blank" class="focus-ring hidden sm:inline-flex items-center gap-2 bg-ink hover:bg-charcoal text-paper mono text-xs uppercase tracking-wide px-4 py-2.5 rounded-sm transition">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span>Écrire sur WhatsApp</span>
+        </a>
+        <a href="https://wa.me/" target="_blank" class="focus-ring sm:hidden inline-flex items-center justify-center w-10 h-10 bg-ink text-paper rounded-sm">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+        </a>
+        <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" class="focus-ring lg:hidden inline-flex items-center justify-center w-10 h-10 border border-ink/20 rounded-sm text-ink">
+          <i class="fa-solid fa-bars text-base" id="menu-icon-open"></i>
+          <i class="fa-solid fa-xmark text-base hidden" id="menu-icon-close"></i>
+          <span class="sr-only">Ouvrir le menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu panel -->
+    <nav id="mobile-menu" class="hidden lg:hidden border-t border-ink/10 bg-paper">
+      <ul class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex flex-col text-base font-medium text-charcoal divide-y divide-ink/10">
+        <li><a href="#agence" class="focus-ring block py-3 hover:text-red transition">Agence</a></li>
+        <li><a href="#services" class="focus-ring block py-3 hover:text-red transition">Services</a></li>
+        <li><a href="#realisations" class="focus-ring block py-3 hover:text-red transition">Réalisations</a></li>
+        <li><a href="#processus" class="focus-ring block py-3 hover:text-red transition">Pourquoi DTK</a></li>
+        <li><a href="#contact" class="focus-ring block py-3 hover:text-red transition">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden border-b border-ink/10">
+    <div class="crop-tl text-ink/25 hidden sm:block"></div>
+    <div class="crop-tr text-ink/25 hidden sm:block"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28 grid lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="regmark text-red"><span class="regmark-circle"></span></span>
+          <span class="mono text-xs uppercase tracking-[0.2em] text-slate">Agence d'impression & communication — Kinshasa</span>
+        </div>
+
+        <h1 class="display text-[13vw] leading-[0.92] sm:text-6xl lg:text-[5.2rem] text-ink uppercase">
+          De l'encre<br>à l'enseigne.
+        </h1>
+
+        <p class="mt-6 max-w-xl text-slate text-base sm:text-lg leading-relaxed">
+          DTK Communication conçoit, imprime et installe les supports qui portent votre marque : enseignes, bâches, packaging, textile et objets publicitaires — pensés pour durer et livrés à temps.
+        </p>
+
+        <div class="mt-9 flex flex-col sm:flex-row gap-4">
+          <a href="#contact" class="focus-ring text-center bg-red hover:bg-red/90 text-paper font-semibold px-7 py-4 rounded-sm transition">
+            Demander un devis
+          </a>
+          <a href="#realisations" class="focus-ring text-center border border-ink/25 hover:border-ink text-ink font-semibold px-7 py-4 rounded-sm transition">
+            Voir nos réalisations
+          </a>
+        </div>
+      </div>
+
+      <!-- Signature visual: a "proof sheet" panel referencing print production -->
+      <div class="lg:col-span-5">
+        <div class="relative bg-white border border-ink/15 rounded-sm shadow-[6px_6px_0_0_#10193A] p-6">
+          <div class="crop-tl text-ink/40"></div>
+          <div class="crop-tr text-ink/40"></div>
+          <div class="crop-bl text-ink/40"></div>
+          <div class="crop-br text-ink/40"></div>
+
+          <p class="mono text-[10px] uppercase tracking-[0.2em] text-slate text-center mb-4">Fiche de production — DTK-2026</p>
+
+          <div class="space-y-3">
+            <div class="flex items-center justify-between border-b border-ink/10 pb-3">
+              <span class="text-sm font-semibold text-ink">Enseignes & lettres 3D</span>
+              <span class="regmark text-cyan"><span class="regmark-circle"></span></span>
+            </div>
+            <div class="flex items-center justify-between border-b border-ink/10 pb-3">
+              <span class="text-sm font-semibold text-ink">Impression grand format</span>
+              <span class="regmark text-red"><span class="regmark-circle"></span></span>
+            </div>
+            <div class="flex items-center justify-between border-b border-ink/10 pb-3">
+              <span class="text-sm font-semibold text-ink">Branding triporteurs</span>
+              <span class="regmark text-yellow"><span class="regmark-circle"></span></span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-semibold text-ink">Packaging & textile</span>
+              <span class="regmark text-ink"><span class="regmark-circle"></span></span>
+            </div>
+          </div>
+
+          <div class="mt-5 colorbar rounded-sm overflow-hidden">
+            <span class="bg-yellow"></span><span class="bg-red"></span><span class="bg-cyan"></span><span class="bg-ink"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee color bar with quick trust markers -->
+  <div class="bg-ink text-paper overflow-hidden border-b border-ink/10">
+    <div class="marquee-track py-3 mono text-xs uppercase tracking-[0.2em]">
+      <div class="flex items-center gap-10 pr-10">
+        <span>Devis gratuit sous 24h</span><span class="text-yellow">•</span>
+        <span>Finitions haute définition</span><span class="text-yellow">•</span>
+        <span>+500 projets réalisés</span><span class="text-yellow">•</span>
+        <span>Livraison dans les délais</span><span class="text-yellow">•</span>
+        <span>Basé à Kinshasa, RDC</span><span class="text-yellow">•</span>
+      </div>
+      <div class="flex items-center gap-10 pr-10" aria-hidden="true">
+        <span>Devis gratuit sous 24h</span><span class="text-yellow">•</span>
+        <span>Finitions haute définition</span><span class="text-yellow">•</span>
+        <span>+500 projets réalisés</span><span class="text-yellow">•</span>
+        <span>Livraison dans les délais</span><span class="text-yellow">•</span>
+        <span>Basé à Kinshasa, RDC</span><span class="text-yellow">•</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="agence" class="py-24 bg-paper">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-14 items-start">
+      <div class="lg:col-span-5">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="regmark text-red"><span class="regmark-circle"></span></span>
+          <span class="mono text-xs uppercase tracking-[0.2em] text-slate">L'agence</span>
+        </div>
+        <h2 class="display text-4xl sm:text-5xl text-ink uppercase leading-[0.95]">
+          Un atelier, pas une usine.
+        </h2>
+      </div>
+
+      <div class="lg:col-span-7 space-y-6">
+        <p class="text-slate text-lg leading-relaxed">
+          DTK Communication est une agence spécialisée dans les solutions de communication, d'impression et les services numériques. Nous accompagnons particuliers, entreprises, associations et institutions dans la réalisation de leurs projets, avec professionnalisme, créativité et innovation.
+        </p>
+        <p class="text-slate leading-relaxed">
+          Chaque commande passe par les mêmes mains : conception, production et contrôle qualité restent internes, ce qui nous permet de tenir nos délais et de garantir un rendu fidèle à ce qui a été validé avec le client. Nous croyons qu'un service de qualité repose avant tout sur l'écoute, la confiance et l'excellence.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-5 pt-4">
+          <div class="border-l-2 border-cyan pl-5 py-1">
+            <h4 class="font-semibold text-ink">Notre vision</h4>
+            <p class="text-sm text-slate mt-1">Devenir la référence de l'impression et de la communication visuelle en RDC.</p>
+          </div>
+          <div class="border-l-2 border-yellow pl-5 py-1">
+            <h4 class="font-semibold text-ink">Notre engagement</h4>
+            <p class="text-sm text-slate mt-1">Des finitions soignées et un rendu fidèle, contrôlés avant chaque livraison.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="colorbar"><span class="bg-yellow"></span><span class="bg-red"></span><span class="bg-cyan"></span><span class="bg-ink"></span></div>
+
+  <!-- Slogan band -->
+  <section class="py-16 bg-paper text-center">
+    <div class="max-w-3xl mx-auto px-5">
+      <p class="display text-3xl sm:text-4xl text-ink uppercase leading-tight">
+        « Nous donnons vie à votre image. »
+      </p>
+      <p class="mono text-xs uppercase tracking-[0.2em] text-slate mt-4">DTK Communication</p>
+    </div>
+  </section>
+
+  <div class="colorbar"><span class="bg-yellow"></span><span class="bg-red"></span><span class="bg-cyan"></span><span class="bg-ink"></span></div>
+
+  <!-- Services -->
+  <section id="services" class="py-24 bg-paper2">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="regmark text-cyan"><span class="regmark-circle"></span></span>
+        <span class="mono text-xs uppercase tracking-[0.2em] text-slate">Prestations</span>
+      </div>
+      <h2 class="display text-4xl sm:text-5xl text-ink uppercase leading-[0.95] max-w-2xl mb-14">
+        Six métiers, une seule adresse.
+      </h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
+        <!-- Card 1 -->
+        <div class="bg-paper2 p-8 hover:bg-white transition">
+          <i class="fa-solid fa-cube text-xl text-cyan mb-5"></i>
+          <h3 class="font-semibold text-lg text-ink mb-3">Enseignes & signalétique 3D</h3>
+          <ul class="text-sm text-slate space-y-1.5">
+            <li>Enseignes lumineuses sur mesure</li>
+            <li>Lettres 3D découpées & reliefs</li>
+            <li>Plaques, pancartes & affichage</li>
+            <li>Habillage complet de stands</li>
+          </ul>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-paper2 p-8 hover:bg-white transition">
+          <i class="fa-solid fa-print text-xl text-red mb-5"></i>
+          <h3 class="font-semibold text-lg text-ink mb-3">Impression numérique & offset</h3>
+          <ul class="text-sm text-slate space-y-1.5">
+            <li>Offset : livres, carnets, brochures</li>
+            <li>Grand format sur bâches</li>
+            <li>Autocollants & vinyles résistants</li>
+            <li>Sérigraphie de précision</li>
+          </ul>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-paper2 p-8 hover:bg-white transition">
+          <i class="fa-solid fa-truck-field text-xl text-yellow mb-5"></i>
+          <h3 class="font-semibold text-lg text-ink mb-3">Branding triporteurs & véhicules</h3>
+          <ul class="text-sm text-slate space-y-1.5">
+            <li>Habillage publicitaire de triporteurs</li>
+            <li>Marquage de flottes automobiles</li>
+            <li>Supports mobiles haute visibilité</li>
+          </ul>
+        </div>
+        <!-- Card 4 -->
+        <div class="bg-paper2 p-8 hover:bg-white transition">
+          <i class="fa-solid fa-box-open text-xl text-cyan mb-5"></i>
+          <h3 class="font-semibold text-lg text-ink mb-3">Packaging alimentaire & carton</h3>
+          <ul class="text-sm text-slate space-y-1.5">
+            <li>Emballages carton & plastique</li>
+            <li>Emballages alimentaires & papier sandwich</li>
+            <li>Boîtes & supports à gâteau sur mesure</li>
+            <li>Sacs papier & papier kraft personnalisé</li>
+          </ul>
+        </div>
+        <!-- Card 5 -->
+        <div class="bg-paper2 p-8 hover:bg-white transition">
+          <i class="fa-solid fa-gift text-xl text-red mb-5"></i>
+          <h3 class="font-semibold text-lg text-ink mb-3">Gadgets publicitaires</h3>
+          <ul class="text-sm text-slate space-y-1.5">
+            <li>Clés USB (époxy & impression directe)</li>
+            <li>Porte-clés plastique & métallique</li>
+            <li>Stylos (bois, plastique, métal) & tasses</li>
+            <li>Bracelets papier, plastique, silicone</li>
+            <li>Rubans sac à dos & parapluies personnalisés</li>
+          </ul>
+        </div>
+        <!-- Card 6 -->
+        <div class="bg-paper2 p-8 hover:bg-white transition">
+          <i class="fa-solid fa-shirt text-xl text-yellow mb-5"></i>
+          <h3 class="font-semibold text-lg text-ink mb-3">Textile & création graphique</h3>
+          <ul class="text-sm text-slate space-y-1.5">
+            <li>Gilets, casquettes, t-shirts, polos</li>
+            <li>Logos 3D & charte graphique</li>
+            <li>Flyers, affiches, cartes de visite</li>
+          </ul>
+        </div>
+        <!-- Card 7 -->
+        <div class="bg-paper2 p-8 hover:bg-white transition">
+          <i class="fa-solid fa-photo-film text-xl text-cyan mb-5"></i>
+          <h3 class="font-semibold text-lg text-ink mb-3">Communication digitale</h3>
+          <ul class="text-sm text-slate space-y-1.5">
+            <li>Création de contenus numériques</li>
+            <li>Identité visuelle & branding digital</li>
+            <li>Accompagnement en communication 360°</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pourquoi nous -->
+  <section id="processus" class="py-24 bg-ink text-paper relative overflow-hidden">
+    <div class="crop-bl text-paper/20 hidden sm:block"></div>
+    <div class="crop-br text-paper/20 hidden sm:block"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="regmark text-yellow"><span class="regmark-circle"></span></span>
+        <span class="mono text-xs uppercase tracking-[0.2em] text-paper/60">Pourquoi DTK</span>
+      </div>
+      <h2 class="display text-4xl sm:text-5xl uppercase leading-[0.95] max-w-2xl mb-14">
+        Ce que vous obtenez en travaillant avec nous.
+      </h2>
+
+      <div class="grid md:grid-cols-4 gap-px bg-paper/10 border border-paper/10">
+        <div class="bg-ink p-7 space-y-3">
+          <i class="fa-solid fa-cubes-stacked text-yellow text-lg"></i>
+          <h4 class="font-semibold">Créativité 3D</h4>
+          <p class="text-sm text-paper/60">Des designs modernes conçus pour capter l'attention dès le premier regard.</p>
+        </div>
+        <div class="bg-ink p-7 space-y-3">
+          <i class="fa-solid fa-clock text-yellow text-lg"></i>
+          <h4 class="font-semibold">Délais tenus</h4>
+          <p class="text-sm text-paper/60">Votre temps compte. Chaque commande est livrée à la date convenue.</p>
+        </div>
+        <div class="bg-ink p-7 space-y-3">
+          <i class="fa-solid fa-shield-halved text-yellow text-lg"></i>
+          <h4 class="font-semibold">Matériaux durables</h4>
+          <p class="text-sm text-paper/60">Bâches, encres et textiles résistants aux intempéries et à l'usage.</p>
+        </div>
+        <div class="bg-ink p-7 space-y-3">
+          <i class="fa-solid fa-user-check text-yellow text-lg"></i>
+          <h4 class="font-semibold">Suivi dédié</h4>
+          <p class="text-sm text-paper/60">Un interlocuteur unique, de la conception à la pose finale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Réalisations -->
+  <section id="realisations" class="py-24 bg-paper">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="regmark text-red"><span class="regmark-circle"></span></span>
+        <span class="mono text-xs uppercase tracking-[0.2em] text-slate">Réalisations</span>
+      </div>
+      <h2 class="display text-4xl sm:text-5xl text-ink uppercase leading-[0.95] max-w-2xl mb-14">
+        Un aperçu de nos derniers projets.
+      </h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <figure class="group relative overflow-hidden border border-ink/10">
+          <img src="https://via.placeholder.com/500x360/10193A/F5F1E7?text=Triporteur" alt="Triporteur habillé pour une campagne publicitaire" class="w-full h-60 object-cover group-hover:scale-105 transition duration-500" />
+          <figcaption class="p-4 bg-white">
+            <p class="mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1">Habillage véhicule</p>
+            <p class="font-semibold text-ink">Triporteur publicitaire</p>
+          </figcaption>
+        </figure>
+        <figure class="group relative overflow-hidden border border-ink/10">
+          <img src="https://via.placeholder.com/500x360/C81D3D/F5F1E7?text=Enseigne+3D" alt="Enseigne lumineuse en lettres 3D" class="w-full h-60 object-cover group-hover:scale-105 transition duration-500" />
+          <figcaption class="p-4 bg-white">
+            <p class="mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1">Signalétique</p>
+            <p class="font-semibold text-ink">Enseigne lumineuse 3D</p>
+          </figcaption>
+        </figure>
+        <figure class="group relative overflow-hidden border border-ink/10">
+          <img src="https://via.placeholder.com/500x360/F5B700/10193A?text=Packaging" alt="Boîtes de packaging alimentaire personnalisées" class="w-full h-60 object-cover group-hover:scale-105 transition duration-500" />
+          <figcaption class="p-4 bg-white">
+            <p class="mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1">Emballages</p>
+            <p class="font-semibold text-ink">Packaging & boîtes</p>
+          </figcaption>
+        </figure>
+        <figure class="group relative overflow-hidden border border-ink/10">
+          <img src="https://via.placeholder.com/500x360/0EA5B7/10193A?text=Textile" alt="Gilets de sécurité et casquettes personnalisés" class="w-full h-60 object-cover group-hover:scale-105 transition duration-500" />
+          <figcaption class="p-4 bg-white">
+            <p class="mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1">Personnalisation</p>
+            <p class="font-semibold text-ink">Gilets & casquettes</p>
+          </figcaption>
+        </figure>
+        <figure class="group relative overflow-hidden border border-ink/10">
+          <img src="https://via.placeholder.com/500x360/10193A/F5F1E7?text=Baches" alt="Bâche grand format installée en façade" class="w-full h-60 object-cover group-hover:scale-105 transition duration-500" />
+          <figcaption class="p-4 bg-white">
+            <p class="mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1">Grand format</p>
+            <p class="font-semibold text-ink">Bâches & panneaux</p>
+          </figcaption>
+        </figure>
+        <figure class="group relative overflow-hidden border border-ink/10">
+          <img src="https://via.placeholder.com/500x360/C81D3D/F5F1E7?text=Gadgets" alt="Clés USB et stylos personnalisés" class="w-full h-60 object-cover group-hover:scale-105 transition duration-500" />
+          <figcaption class="p-4 bg-white">
+            <p class="mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1">Objets pub</p>
+            <p class="font-semibold text-ink">Clés USB & stylos</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="colorbar"><span class="bg-yellow"></span><span class="bg-red"></span><span class="bg-cyan"></span><span class="bg-ink"></span></div>
+
+  <!-- Contact -->
+  <section id="contact" class="py-24 bg-paper2">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-14">
+      <div class="lg:col-span-5 space-y-8">
+        <div>
+          <div class="flex items-center gap-3 mb-5">
+            <span class="regmark text-yellow"><span class="regmark-circle"></span></span>
+            <span class="mono text-xs uppercase tracking-[0.2em] text-slate">Contact</span>
+          </div>
+          <h2 class="display text-4xl sm:text-5xl text-ink uppercase leading-[0.95]">
+            Parlons de votre projet.
+          </h2>
+        </div>
+
+        <div class="space-y-5">
+          <a href="tel:+243000000000" class="focus-ring flex items-center gap-4 group">
+            <span class="w-11 h-11 flex items-center justify-center bg-ink text-yellow rounded-sm shrink-0"><i class="fa-solid fa-phone"></i></span>
+            <span>
+              <span class="block mono text-[10px] uppercase tracking-[0.15em] text-slate">Téléphone</span>
+              <span class="font-semibold text-ink group-hover:text-red transition">+243 000 000 000</span>
+            </span>
+          </a>
+          <a href="https://wa.me/" target="_blank" class="focus-ring flex items-center gap-4 group">
+            <span class="w-11 h-11 flex items-center justify-center bg-green-700 text-white rounded-sm shrink-0"><i class="fa-brands fa-whatsapp"></i></span>
+            <span>
+              <span class="block mono text-[10px] uppercase tracking-[0.15em] text-slate">WhatsApp</span>
+              <span class="font-semibold text-ink group-hover:text-red transition">+243 000 000 000</span>
+            </span>
+          </a>
+          <div class="flex items-center gap-4">
+            <span class="w-11 h-11 flex items-center justify-center bg-red text-white rounded-sm shrink-0"><i class="fa-solid fa-location-dot"></i></span>
+            <span>
+              <span class="block mono text-[10px] uppercase tracking-[0.15em] text-slate">Adresse</span>
+              <span class="font-semibold text-ink">Kinshasa, République Démocratique du Congo</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- QR code -->
+        <div class="relative flex items-center gap-5 bg-white border border-ink/10 p-5 max-w-sm">
+          <div class="crop-tl text-ink/20"></div>
+          <div class="crop-br text-ink/20"></div>
+          <img src="https://via.placeholder.com/120x120/10193A/F5F1E7?text=QR" alt="QR Code vers WhatsApp DTK Communication" class="w-20 h-20 shrink-0" />
+          <p class="text-sm text-slate leading-snug">
+            Scannez pour démarrer une conversation directement sur <span class="text-ink font-semibold">WhatsApp</span>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="lg:col-span-7">
+        <form class="bg-white border border-ink/10 p-8 space-y-5 relative">
+          <div class="crop-tr text-ink/20"></div>
+          <div class="crop-br text-ink/20"></div>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1.5">Nom / Entreprise</label>
+              <input type="text" placeholder="Jean Mukendi" class="focus-ring w-full px-4 py-3 text-sm border border-ink/15 bg-paper focus:border-cyan outline-none" required />
+            </div>
+            <div>
+              <label class="block mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1.5">Téléphone / WhatsApp</label>
+              <input type="tel" placeholder="+243 ..." class="focus-ring w-full px-4 py-3 text-sm border border-ink/15 bg-paper focus:border-cyan outline-none" required />
+            </div>
+          </div>
+          <div>
+            <label class="block mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1.5">Service recherché</label>
+            <select class="focus-ring w-full px-4 py-3 text-sm border border-ink/15 bg-paper focus:border-cyan outline-none">
+              <option>Impression grand format & bâches</option>
+              <option>Enseignes lumineuses & lettres 3D</option>
+              <option>Branding triporteurs & véhicules</option>
+              <option>Gadgets publicitaires & textile</option>
+              <option>Packaging alimentaire & carton</option>
+              <option>Autre prestation</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1.5">Votre projet, en quelques mots</label>
+            <textarea rows="3" placeholder="Décrivez ce dont vous avez besoin..." class="focus-ring w-full px-4 py-3 text-sm border border-ink/15 bg-paper focus:border-cyan outline-none"></textarea>
+          </div>
+          <button type="submit" class="focus-ring w-full bg-red hover:bg-red/90 text-white font-semibold py-4 transition">
+            Recevoir mon devis gratuit
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink text-paper pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-paper/10">
+        <div class="space-y-4">
+          <div class="flex items-baseline gap-1">
+            <span class="display text-2xl">DTK</span>
+            <span class="mono text-[10px] tracking-[0.2em] text-paper/50 uppercase">Communication</span>
+          </div>
+          <p class="text-xs leading-relaxed text-paper/60">
+            Agence d'impression et de communication visuelle basée à Kinshasa. Nous donnons forme à votre image, du concept au support fini.
+          </p>
+        </div>
+        <div>
+          <h4 class="mono text-xs uppercase tracking-[0.2em] text-paper/50 mb-4">Menu</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#agence" class="hover:text-yellow transition focus-ring rounded">Agence</a></li>
+            <li><a href="#services" class="hover:text-yellow transition focus-ring rounded">Services</a></li>
+            <li><a href="#realisations" class="hover:text-yellow transition focus-ring rounded">Réalisations</a></li>
+            <li><a href="#processus" class="hover:text-yellow transition focus-ring rounded">Pourquoi DTK</a></li>
+            <li><a href="#contact" class="hover:text-yellow transition focus-ring rounded">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="mono text-xs uppercase tracking-[0.2em] text-paper/50 mb-4">Spécialités</h4>
+          <ul class="space-y-2 text-sm text-paper/70">
+            <li>Enseignes & lettres 3D</li>
+            <li>Bâches & grand format</li>
+            <li>Branding triporteurs</li>
+            <li>Packaging alimentaire</li>
+            <li>Gadgets publicitaires</li>
+            <li>Textile & casquettes</li>
+          </ul>
+        </div>
+        <div class="space-y-3">
+          <h4 class="mono text-xs uppercase tracking-[0.2em] text-paper/50 mb-4">Engagement</h4>
+          <p class="text-xs text-paper/60 leading-relaxed">Chaque projet reçoit la même attention : travail soigné, délais respectés, service client réactif.</p>
+        </div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-paper/50">
+        <p>© 2026 DTK Communication. Tous droits réservés.</p>
+        <p>Kinshasa, République Démocratique du Congo</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+
+    function closeMenu() {
+      mobileMenu.classList.add('hidden');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    }
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        mobileMenu.classList.remove('hidden');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+      }
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  </script>
+</body>
+</html>
