@@ -88,11 +88,11 @@
       </nav>
 
       <div class="flex items-center gap-3">
-        <a href="https://wa.me/" target="_blank" class="focus-ring hidden sm:inline-flex items-center gap-2 bg-ink hover:bg-charcoal text-paper mono text-xs uppercase tracking-wide px-4 py-2.5 rounded-sm transition">
+        <a href="https://wa.me/243800930963" target="_blank" class="focus-ring hidden sm:inline-flex items-center gap-2 bg-ink hover:bg-charcoal text-paper mono text-xs uppercase tracking-wide px-4 py-2.5 rounded-sm transition">
           <i class="fa-brands fa-whatsapp text-base"></i>
           <span>Écrire sur WhatsApp</span>
         </a>
-        <a href="https://wa.me/" target="_blank" class="focus-ring sm:hidden inline-flex items-center justify-center w-10 h-10 bg-ink text-paper rounded-sm">
+        <a href="https://wa.me/243800930963" target="_blank" class="focus-ring sm:hidden inline-flex items-center justify-center w-10 h-10 bg-ink text-paper rounded-sm">
           <i class="fa-brands fa-whatsapp text-base"></i>
         </a>
         <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" class="focus-ring lg:hidden inline-flex items-center justify-center w-10 h-10 border border-ink/20 rounded-sm text-ink">
@@ -116,30 +116,33 @@
   </header>
 
   <!-- Hero -->
-  <section class="relative overflow-hidden border-b border-ink/10">
-    <div class="crop-tl text-ink/25 hidden sm:block"></div>
-    <div class="crop-tr text-ink/25 hidden sm:block"></div>
+  <section class="relative overflow-hidden border-b border-ink/10 bg-[url('pic/hero2.jpg')] bg-cover bg-center bg-no-repeat">
+    
+    <div class="absolute inset-0 bg-ink/75 backdrop-blur-[1px]"></div>
 
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28 grid lg:grid-cols-12 gap-12 items-center">
+    <div class="relative z-10 crop-tl text-paper/25 hidden sm:block"></div>
+    <div class="relative z-10 crop-tr text-paper/25 hidden sm:block"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28 grid lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-7">
         <div class="flex items-center gap-3 mb-6">
-          <span class="regmark text-red"><span class="regmark-circle"></span></span>
-          <span class="mono text-xs uppercase tracking-[0.2em] text-slate">Agence d'impression & communication — Kinshasa</span>
+          <span class="regmark text-cyan"><span class="regmark-circle"></span></span>
+          <span class="mono text-xs uppercase tracking-[0.2em] text-paper/80">Agence d'impression & communication — Kinshasa</span>
         </div>
 
-        <h1 class="display text-[13vw] leading-[0.92] sm:text-6xl lg:text-[5.2rem] text-ink uppercase">
+        <h1 class="display text-[13vw] leading-[0.92] sm:text-6xl lg:text-[5.2rem] text-paper uppercase">
           De l'encre<br>à l'enseigne.
         </h1>
 
-        <p class="mt-6 max-w-xl text-slate text-base sm:text-lg leading-relaxed">
+        <p class="mt-6 max-w-xl text-paper/80 text-base sm:text-lg leading-relaxed">
           DTK Communication conçoit, imprime et installe les supports qui portent votre marque : enseignes, bâches, packaging, textile et objets publicitaires — pensés pour durer et livrés à temps.
         </p>
 
         <div class="mt-9 flex flex-col sm:flex-row gap-4">
-          <a href="#contact" class="focus-ring text-center bg-red hover:bg-red/90 text-paper font-semibold px-7 py-4 rounded-sm transition">
+          <a href="#contact" class="focus-ring text-center bg-red hover:bg-red/90 text-paper font-semibold px-7 py-4 rounded-sm transition shadow-lg">
             Demander un devis
           </a>
-          <a href="#realisations" class="focus-ring text-center border border-ink/25 hover:border-ink text-ink font-semibold px-7 py-4 rounded-sm transition">
+          <a href="#realisations" class="focus-ring text-center border border-paper/30 hover:border-paper text-paper font-semibold px-7 py-4 rounded-sm transition">
             Voir nos réalisations
           </a>
         </div>
@@ -147,7 +150,7 @@
 
       <!-- Signature visual: a "proof sheet" panel referencing print production -->
       <div class="lg:col-span-5">
-        <div class="relative bg-white border border-ink/15 rounded-sm shadow-[6px_6px_0_0_#10193A] p-6">
+        <div class="relative bg-white/95 backdrop-blur border border-white/20 rounded-sm shadow-[6px_6px_0_0_#F5B700] p-6">
           <div class="crop-tl text-ink/40"></div>
           <div class="crop-tr text-ink/40"></div>
           <div class="crop-bl text-ink/40"></div>
@@ -175,7 +178,7 @@
           </div>
 
           <div class="mt-5 colorbar rounded-sm overflow-hidden">
-            <span class="bg-yellow"></span><span class="bg-red"></span><span class="bg-cyan"></span>
+            <span class="bg-cyan"></span><span class="bg-yellow"></span><span class="bg-red"></span>
           </div>
         </div>
       </div>
@@ -207,7 +210,7 @@
     <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-14 items-start">
       <div class="lg:col-span-5">
         <div class="flex items-center gap-3 mb-5">
-          <span class="regmark text-red"><span class="regmark-circle"></span></span>
+          <span class="regmark text-cyan"><span class="regmark-circle"></span></span>
           <span class="mono text-xs uppercase tracking-[0.2em] text-slate">L'agence</span>
         </div>
         <h2 class="display text-4xl sm:text-5xl text-ink uppercase leading-[0.95]">
@@ -237,7 +240,7 @@
     </div>
   </section>
 
-  <div class="colorbar"><span class="bg-yellow"></span><span class="bg-red"></span><span class="bg-cyan"></div>
+  <div class="colorbar"><span class="bg-cyan"></span><span class="bg-yellow"></span><span class="bg-red"></span></div>
 
   <!-- Slogan band -->
   <section class="py-16 bg-paper text-center">
@@ -249,13 +252,13 @@
     </div>
   </section>
 
-  <div class="colorbar"><span class="bg-yellow"></span><span class="bg-red"></span><span class="bg-cyan"></div>
+  <div class="colorbar"><span class="bg-cyan"></span><span class="bg-yellow"></span><span class="bg-red"></span></div>
 
   <!-- Services -->
   <section id="services" class="py-24 bg-paper2">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="flex items-center gap-3 mb-5">
-        <span class="regmark text-cyan"><span class="regmark-circle"></span></span>
+        <span class="regmark text-red"><span class="regmark-circle"></span></span>
         <span class="mono text-xs uppercase tracking-[0.2em] text-slate">Prestations</span>
       </div>
       <h2 class="display text-4xl sm:text-5xl text-ink uppercase leading-[0.95] max-w-2xl mb-14">
@@ -456,18 +459,18 @@
         </div>
 
         <div class="space-y-5">
-          <a href="tel:+243000000000" class="focus-ring flex items-center gap-4 group">
+          <a href="tel:+243800930963" class="focus-ring flex items-center gap-4 group">
             <span class="w-11 h-11 flex items-center justify-center bg-ink text-yellow rounded-sm shrink-0"><i class="fa-solid fa-phone"></i></span>
             <span>
               <span class="block mono text-[10px] uppercase tracking-[0.15em] text-slate">Téléphone</span>
-              <span class="font-semibold text-ink group-hover:text-red transition">+243 000 000 000</span>
+              <span class="font-semibold text-ink group-hover:text-red transition">+243 800 930 963</span>
             </span>
           </a>
-          <a href="https://wa.me/" target="_blank" class="focus-ring flex items-center gap-4 group">
+          <a href="https://wa.me/243800930963" target="_blank" class="focus-ring flex items-center gap-4 group">
             <span class="w-11 h-11 flex items-center justify-center bg-green-700 text-white rounded-sm shrink-0"><i class="fa-brands fa-whatsapp"></i></span>
             <span>
               <span class="block mono text-[10px] uppercase tracking-[0.15em] text-slate">WhatsApp</span>
-              <span class="font-semibold text-ink group-hover:text-red transition">+243 000 000 000</span>
+              <span class="font-semibold text-ink group-hover:text-red transition">+243 800 930 963</span>
             </span>
           </a>
           <div class="flex items-center gap-4">
@@ -477,16 +480,6 @@
               <span class="font-semibold text-ink">Kinshasa, République Démocratique du Congo</span>
             </span>
           </div>
-        </div>
-
-        <!-- QR code -->
-        <div class="relative flex items-center gap-5 bg-white border border-ink/10 p-5 max-w-sm">
-          <div class="crop-tl text-ink/20"></div>
-          <div class="crop-br text-ink/20"></div>
-          <img src="https://via.placeholder.com/120x120/10193A/F5F1E7?text=QR" alt="QR Code vers WhatsApp DTK Communication" class="w-20 h-20 shrink-0" />
-          <p class="text-sm text-slate leading-snug">
-            Scannez pour démarrer une conversation directement sur <span class="text-ink font-semibold">WhatsApp</span>.
-          </p>
         </div>
       </div>
 
