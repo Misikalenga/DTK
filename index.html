@@ -60,7 +60,15 @@
 
   .focus-ring:focus-visible { outline: 3px solid #0EA5B7; outline-offset: 2px; }
 
-  .marquee-track { display: flex; width: max-content; animation: scroll 32s linear infinite; }
+  /* Seamless Marquee Track */
+  .marquee-track { 
+    display: flex; 
+    width: max-content; 
+    animation: scroll 30s linear infinite; 
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
   @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 </style>
 </head>
@@ -182,16 +190,30 @@
   </section>
 
   <!-- Marquee color bar with quick trust markers -->
-  <div class="bg-ink text-paper overflow-hidden border-b border-ink/10">
+  <div class="bg-ink text-paper overflow-hidden border-b border-ink/10 select-none">
     <div class="marquee-track py-3 mono text-xs uppercase tracking-[0.2em]">
-      <div class="flex items-center gap-10 pr-10">
+      <div class="flex items-center gap-10 pr-10 shrink-0">
         <span>Devis gratuit sous 24h</span><span class="text-yellow">•</span>
         <span>Finitions haute définition</span><span class="text-yellow">•</span>
         <span>+500 projets réalisés</span><span class="text-yellow">•</span>
         <span>Livraison dans les délais</span><span class="text-yellow">•</span>
         <span>Basé à Kinshasa, RDC</span><span class="text-yellow">•</span>
       </div>
-      <div class="flex items-center gap-10 pr-10" aria-hidden="true">
+      <div class="flex items-center gap-10 pr-10 shrink-0">
+        <span>Devis gratuit sous 24h</span><span class="text-yellow">•</span>
+        <span>Finitions haute définition</span><span class="text-yellow">•</span>
+        <span>+500 projets réalisés</span><span class="text-yellow">•</span>
+        <span>Livraison dans les délais</span><span class="text-yellow">•</span>
+        <span>Basé à Kinshasa, RDC</span><span class="text-yellow">•</span>
+      </div>
+      <div class="flex items-center gap-10 pr-10 shrink-0" aria-hidden="true">
+        <span>Devis gratuit sous 24h</span><span class="text-yellow">•</span>
+        <span>Finitions haute définition</span><span class="text-yellow">•</span>
+        <span>+500 projets réalisés</span><span class="text-yellow">•</span>
+        <span>Livraison dans les délais</span><span class="text-yellow">•</span>
+        <span>Basé à Kinshasa, RDC</span><span class="text-yellow">•</span>
+      </div>
+      <div class="flex items-center gap-10 pr-10 shrink-0" aria-hidden="true">
         <span>Devis gratuit sous 24h</span><span class="text-yellow">•</span>
         <span>Finitions haute définition</span><span class="text-yellow">•</span>
         <span>+500 projets réalisés</span><span class="text-yellow">•</span>
@@ -370,7 +392,7 @@
     </div>
   </section>
 
-<!-- Réalisations -->
+  <!-- Réalisations -->
   <section id="realisations" class="py-24 bg-paper">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="flex items-center gap-3 mb-5">
@@ -383,56 +405,56 @@
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- img1.jpeg -->
-        <figure class="group relative overflow-hidden border border-ink/10">
+        <figure class="group relative overflow-hidden border border-ink/10 bg-white hover:border-ink/30 transition duration-300">
           <img src="pic/img1.jpeg" alt="Bracelets et rubans imprimés personnalisés" class="w-full h-60 object-cover group-hover:scale-105 transition duration-500" />
-          <figcaption class="p-4 bg-white">
+          <figcaption class="p-4">
             <p class="mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1">Objets pub & évènementiel</p>
-            <p class="font-semibold text-ink">Bracelets & rubans imprimés</p>
+            <p class="font-semibold text-ink group-hover:text-red transition">Bracelets & rubans imprimés</p>
           </figcaption>
         </figure>
 
         <!-- img2.jpeg -->
-        <figure class="group relative overflow-hidden border border-ink/10">
+        <figure class="group relative overflow-hidden border border-ink/10 bg-white hover:border-ink/30 transition duration-300">
           <img src="pic/img2.jpeg" alt="Marquage et habillage complet de véhicule" class="w-full h-60 object-cover group-hover:scale-105 transition duration-500" />
-          <figcaption class="p-4 bg-white">
+          <figcaption class="p-4">
             <p class="mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1">Habillage véhicule</p>
-            <p class="font-semibold text-ink">Marquage & wrapping automobile</p>
+            <p class="font-semibold text-ink group-hover:text-red transition">Marquage & wrapping automobile</p>
           </figcaption>
         </figure>
 
         <!-- img3.jpeg -->
-        <figure class="group relative overflow-hidden border border-ink/10">
+        <figure class="group relative overflow-hidden border border-ink/10 bg-white hover:border-ink/30 transition duration-300">
           <img src="pic/img3.jpeg" alt="Enseigne lumineuse et lettres 3D Body Control" class="w-full h-60 object-cover group-hover:scale-105 transition duration-500" />
-          <figcaption class="p-4 bg-white">
+          <figcaption class="p-4">
             <p class="mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1">Signalétique</p>
-            <p class="font-semibold text-ink">Enseigne & lettres 3D</p>
+            <p class="font-semibold text-ink group-hover:text-red transition">Enseigne & lettres 3D</p>
           </figcaption>
         </figure>
 
         <!-- img4.jpeg -->
-        <figure class="group relative overflow-hidden border border-ink/10">
+        <figure class="group relative overflow-hidden border border-ink/10 bg-white hover:border-ink/30 transition duration-300">
           <img src="pic/img4.jpeg" alt="Sacs kraft et packaging papier Wine Route" class="w-full h-60 object-cover group-hover:scale-105 transition duration-500" />
-          <figcaption class="p-4 bg-white">
+          <figcaption class="p-4">
             <p class="mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1">Packaging & emballages</p>
-            <p class="font-semibold text-ink">Sacs kraft & emballages sur mesure</p>
+            <p class="font-semibold text-ink group-hover:text-red transition">Sacs kraft & emballages sur mesure</p>
           </figcaption>
         </figure>
 
         <!-- img5.jpeg -->
-        <figure class="group relative overflow-hidden border border-ink/10">
+        <figure class="group relative overflow-hidden border border-ink/10 bg-white hover:border-ink/30 transition duration-300">
           <img src="pic/img5.jpeg" alt="Branding publicitaire sur triporteur Flodent" class="w-full h-60 object-cover group-hover:scale-105 transition duration-500" />
-          <figcaption class="p-4 bg-white">
+          <figcaption class="p-4">
             <p class="mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1">Branding mobile</p>
-            <p class="font-semibold text-ink">Habillage de triporteur</p>
+            <p class="font-semibold text-ink group-hover:text-red transition">Habillage de triporteur</p>
           </figcaption>
         </figure>
 
         <!-- img6.jpeg -->
-        <figure class="group relative overflow-hidden border border-ink/10">
+        <figure class="group relative overflow-hidden border border-ink/10 bg-white hover:border-ink/30 transition duration-300">
           <img src="pic/img6.jpeg" alt="Gourdes, carnets et goodies personnalisés IGM" class="w-full h-60 object-cover group-hover:scale-105 transition duration-500" />
-          <figcaption class="p-4 bg-white">
+          <figcaption class="p-4">
             <p class="mono text-[10px] uppercase tracking-[0.15em] text-slate mb-1">Gadgets d'entreprise</p>
-            <p class="font-semibold text-ink">Gourdes, carnets & goodies</p>
+            <p class="font-semibold text-ink group-hover:text-red transition">Gourdes, carnets & goodies</p>
           </figcaption>
         </figure>
       </div>
@@ -559,7 +581,7 @@
         </div>
       </div>
       <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-paper/50">
-        <p>©<span id="date">date</span>. Tous droits réservés.</p>
+        <p>© <span id="date"></span> DTK Communication. Tous droits réservés.</p>
         <p>Kinshasa, République Démocratique du Congo</p>
       </div>
     </div>
